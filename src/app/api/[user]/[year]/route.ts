@@ -11,7 +11,7 @@ export async function GET(
   return NextResponse.json(parseContributions(res));
 }
 
-export async function getContributions(user: string, year: string) {
+async function getContributions(user: string, year: string) {
   const api = `https://github.com/users/${user}/contributions?from=${year}-12-01&to=${year}-12-31`;
 
   const res = await fetch(api);
@@ -23,7 +23,7 @@ export async function getContributions(user: string, year: string) {
   return await res.text();
 }
 
-export function parseContributions(html: string) {
+function parseContributions(html: string) {
   const { document } = parseHTML(html);
 
   const rows = document.querySelectorAll<HTMLTableRowElement>("tbody > tr");
