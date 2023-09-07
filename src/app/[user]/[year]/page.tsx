@@ -1,7 +1,7 @@
 import { Params } from "./params.model";
 
 export default async function Contributions({
-  params: { user, year },
+  params: { user = "lashagelashvili", year = "2023" },
 }: Params) {
   const res = await fetch(`http://localhost:3000/api/${user}/${year}`);
 
