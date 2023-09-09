@@ -6,6 +6,11 @@ export async function GET(
   request: Request,
   { params: { user, year } }: Params
 ) {
+  if (!user || !year) {
+    user = "lashagelashvili";
+    year = "2023";
+  }
+
   const res = await getContributions(user, year);
 
   return NextResponse.json(parseContributions(res));
